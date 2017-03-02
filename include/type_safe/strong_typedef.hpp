@@ -150,12 +150,26 @@ namespace type_safe
         template <class StrongTypedef, typename Result = bool_t>
         struct equality_comparison
         {
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator==(const StrongTypedef& lhs, const StrongTypedef& rhs)
             {
                 using type = underlying_type<StrongTypedef>;
                 return static_cast<const type&>(lhs) == static_cast<const type&>(rhs);
             }
 
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator!=(const StrongTypedef& lhs, const StrongTypedef& rhs)
             {
                 return !(lhs == rhs);
@@ -166,6 +180,13 @@ namespace type_safe
         struct mixed_equality_comparison
         {
             /// \group equal
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator==(const StrongTypedef& lhs, const Other& rhs)
             {
                 using type = underlying_type<StrongTypedef>;
@@ -173,18 +194,39 @@ namespace type_safe
             }
 
             /// \group equal
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator==(const Other& lhs, const StrongTypedef& rhs)
             {
                 return rhs == lhs;
             }
 
             /// \group not_equal
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator!=(const StrongTypedef& lhs, const Other& rhs)
             {
                 return !(lhs == rhs);
             }
 
             /// \group not_equal
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator!=(const Other& lhs, const StrongTypedef& rhs)
             {
                 return !(rhs == lhs);
@@ -194,22 +236,50 @@ namespace type_safe
         template <class StrongTypedef, typename Result = bool_t>
         struct relational_comparison
         {
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator<(const StrongTypedef& lhs, const StrongTypedef& rhs)
             {
                 using type = underlying_type<StrongTypedef>;
                 return static_cast<const type&>(lhs) < static_cast<const type&>(rhs);
             }
 
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator>(const StrongTypedef& lhs, const StrongTypedef& rhs)
             {
                 return rhs < lhs;
             }
 
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator<=(const StrongTypedef& lhs, const StrongTypedef& rhs)
             {
                 return !(rhs < lhs);
             }
 
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator>=(const StrongTypedef& lhs, const StrongTypedef& rhs)
             {
                 return !(lhs < rhs);
@@ -220,6 +290,13 @@ namespace type_safe
         struct mixed_relational_comparison
         {
             /// \group less
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator<(const StrongTypedef& lhs, const Other& rhs)
             {
                 using type = underlying_type<StrongTypedef>;
@@ -227,6 +304,13 @@ namespace type_safe
             }
 
             /// \group less
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator<(const Other& lhs, const StrongTypedef& rhs)
             {
                 using type = underlying_type<StrongTypedef>;
@@ -234,36 +318,78 @@ namespace type_safe
             }
 
             /// \group greater
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator>(const StrongTypedef& lhs, const Other& rhs)
             {
                 return rhs < lhs;
             }
 
             /// \group greater
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator>(const Other& lhs, const StrongTypedef& rhs)
             {
                 return rhs < lhs;
             }
 
             /// \group less_eq
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator<=(const StrongTypedef& lhs, const Other& rhs)
             {
                 return !(rhs < lhs);
             }
 
             /// \group less_eq
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator<=(const Other& lhs, const StrongTypedef& rhs)
             {
                 return !(rhs < lhs);
             }
 
             /// \group greater_equal
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator>=(const StrongTypedef& lhs, const Other& rhs)
             {
                 return !(lhs < rhs);
             }
 
             /// \group greater_equal
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             friend constexpr Result operator>=(const Other& lhs, const StrongTypedef& rhs)
             {
                 return !(lhs < rhs);
@@ -271,96 +397,180 @@ namespace type_safe
         };
 
 /// \exclude
-#define TYPE_SAFE_DETAIL_MAKE_OP(Name, Op)                                                         \
-    template <class StrongTypedef>                                                                 \
-    struct Name                                                                                    \
-    {                                                                                              \
-        friend StrongTypedef& operator Op##=(StrongTypedef& lhs, const StrongTypedef& rhs)         \
-        {                                                                                          \
-            get(lhs) Op## = get(rhs);                                                              \
-            return lhs;                                                                            \
-        }                                                                                          \
-                                                                                                   \
-        friend StrongTypedef& operator Op##=(StrongTypedef& lhs, StrongTypedef&& rhs)              \
-        {                                                                                          \
-            get(lhs) Op## = get(std::move(rhs));                                                   \
-            return lhs;                                                                            \
-        }                                                                                          \
-                                                                                                   \
-        friend StrongTypedef&& operator Op##=(StrongTypedef&& lhs, const StrongTypedef& rhs)       \
-        {                                                                                          \
-            get(lhs) Op## = get(rhs);                                                              \
-            return std::move(lhs);                                                                 \
-        }                                                                                          \
-                                                                                                   \
-        friend StrongTypedef&& operator Op##=(StrongTypedef&& lhs, StrongTypedef&& rhs)            \
-        {                                                                                          \
-            get(lhs) Op## = get(std::move(rhs));                                                   \
-            return std::move(lhs);                                                                 \
-        }                                                                                          \
-                                                                                                   \
-        friend constexpr StrongTypedef operator Op(const StrongTypedef& lhs,                       \
-                                                   const StrongTypedef& rhs)                       \
-        {                                                                                          \
-            return StrongTypedef(get(lhs) Op get(rhs));                                            \
-        }                                                                                          \
-                                                                                                   \
-        friend constexpr StrongTypedef operator Op(StrongTypedef&& lhs, const StrongTypedef& rhs)  \
-        {                                                                                          \
-            return StrongTypedef(get(std::move(lhs)) Op get(rhs));                                 \
-        }                                                                                          \
-                                                                                                   \
-        friend constexpr StrongTypedef operator Op(const StrongTypedef& lhs, StrongTypedef&& rhs)  \
-        {                                                                                          \
-            return StrongTypedef(get(lhs) Op get(std::move(rhs)));                                 \
-        }                                                                                          \
-                                                                                                   \
-        friend constexpr StrongTypedef operator Op(StrongTypedef&& lhs, StrongTypedef&& rhs)       \
-        {                                                                                          \
-            return StrongTypedef(get(std::move(lhs)) Op get(std::move(rhs)));                      \
-        }                                                                                          \
-    };                                                                                             \
-                                                                                                   \
-    template <class StrongTypedef, typename Other>                                                 \
-    struct mixed_##Name                                                                            \
-    {                                                                                              \
-        friend StrongTypedef& operator Op##=(StrongTypedef& lhs, const Other& other)               \
-        {                                                                                          \
-            using type    = underlying_type<StrongTypedef>;                                        \
-            get(lhs) Op## = static_cast<const type&>(other);                                       \
-            return lhs;                                                                            \
-        }                                                                                          \
-                                                                                                   \
-        friend StrongTypedef&& operator Op##=(StrongTypedef&& lhs, const Other& other)             \
-        {                                                                                          \
-            using type    = underlying_type<StrongTypedef>;                                        \
-            get(lhs) Op## = static_cast<const type&>(other);                                       \
-            return std::move(lhs);                                                                 \
-        }                                                                                          \
-                                                                                                   \
-        friend constexpr StrongTypedef operator Op(const StrongTypedef& lhs, const Other& rhs)     \
-        {                                                                                          \
-            using type = underlying_type<StrongTypedef>;                                           \
-            return StrongTypedef(get(lhs) Op static_cast<const type&>(rhs));                       \
-        }                                                                                          \
-                                                                                                   \
-        friend constexpr StrongTypedef operator Op(StrongTypedef&& lhs, const Other& rhs)          \
-        {                                                                                          \
-            using type = underlying_type<StrongTypedef>;                                           \
-            return StrongTypedef(get(std::move(lhs)) Op static_cast<const type&>(rhs));            \
-        }                                                                                          \
-                                                                                                   \
-        friend constexpr StrongTypedef operator Op(const Other& lhs, const StrongTypedef& rhs)     \
-        {                                                                                          \
-            using type = underlying_type<StrongTypedef>;                                           \
-            return StrongTypedef(static_cast<const type&>(lhs) Op get(rhs));                       \
-        }                                                                                          \
-                                                                                                   \
-        friend constexpr StrongTypedef operator Op(const Other& lhs, StrongTypedef&& rhs)          \
-        {                                                                                          \
-            using type = underlying_type<StrongTypedef>;                                           \
-            return StrongTypedef(static_cast<const type&>(lhs) Op get(std::move(rhs)));            \
-        }                                                                                          \
+#define TYPE_SAFE_DETAIL_MAKE_OP(Name, Op)                                                           \
+    template <class StrongTypedef>                                                                   \
+    struct Name                                                                                      \
+    {                                                                                                \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend StrongTypedef& operator Op##=(StrongTypedef& lhs, const StrongTypedef& rhs)           \
+        {                                                                                            \
+            get(lhs) Op## = get(rhs);                                                                \
+            return lhs;                                                                              \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend StrongTypedef& operator Op##=(StrongTypedef& lhs, StrongTypedef&& rhs)                \
+        {                                                                                            \
+            get(lhs) Op## = get(std::move(rhs));                                                     \
+            return lhs;                                                                              \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend StrongTypedef&& operator Op##=(StrongTypedef&& lhs, const StrongTypedef& rhs)         \
+        {                                                                                            \
+            get(lhs) Op## = get(rhs);                                                                \
+            return std::move(lhs);                                                                   \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend StrongTypedef&& operator Op##=(StrongTypedef&& lhs, StrongTypedef&& rhs)              \
+        {                                                                                            \
+            get(lhs) Op## = get(std::move(rhs));                                                     \
+            return std::move(lhs);                                                                   \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend constexpr StrongTypedef operator Op(const StrongTypedef& lhs,                         \
+                                                   const StrongTypedef& rhs)                         \
+        {                                                                                            \
+            return StrongTypedef(get(lhs) Op get(rhs));                                              \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend constexpr StrongTypedef operator Op(StrongTypedef&& lhs, const StrongTypedef& rhs)    \
+        {                                                                                            \
+            return StrongTypedef(get(std::move(lhs)) Op get(rhs));                                   \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend constexpr StrongTypedef operator Op(const StrongTypedef& lhs, StrongTypedef&& rhs)    \
+        {                                                                                            \
+            return StrongTypedef(get(lhs) Op get(std::move(rhs)));                                   \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend constexpr StrongTypedef operator Op(StrongTypedef&& lhs, StrongTypedef&& rhs)         \
+        {                                                                                            \
+            return StrongTypedef(get(std::move(lhs)) Op get(std::move(rhs)));                        \
+        }                                                                                            \
+    };                                                                                               \
+                                                                                                     \
+    template <class StrongTypedef, typename Other>                                                   \
+    struct mixed_##Name                                                                              \
+    {                                                                                                \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend StrongTypedef& operator Op##=(StrongTypedef& lhs, const Other& other)                 \
+        {                                                                                            \
+            using type    = underlying_type<StrongTypedef>;                                          \
+            get(lhs) Op## = static_cast<const type&>(other);                                         \
+            return lhs;                                                                              \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend StrongTypedef&& operator Op##=(StrongTypedef&& lhs, const Other& other)               \
+        {                                                                                            \
+            using type    = underlying_type<StrongTypedef>;                                          \
+            get(lhs) Op## = static_cast<const type&>(other);                                         \
+            return std::move(lhs);                                                                   \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend constexpr StrongTypedef operator Op(const StrongTypedef& lhs, const Other& rhs)       \
+        {                                                                                            \
+            using type = underlying_type<StrongTypedef>;                                             \
+            return StrongTypedef(get(lhs) Op static_cast<const type&>(rhs));                         \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend constexpr StrongTypedef operator Op(StrongTypedef&& lhs, const Other& rhs)            \
+        {                                                                                            \
+            using type = underlying_type<StrongTypedef>;                                             \
+            return StrongTypedef(get(std::move(lhs)) Op static_cast<const type&>(rhs));              \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend constexpr StrongTypedef operator Op(const Other& lhs, const StrongTypedef& rhs)       \
+        {                                                                                            \
+            using type = underlying_type<StrongTypedef>;                                             \
+            return StrongTypedef(static_cast<const type&>(lhs) Op get(rhs));                         \
+        }                                                                                            \
+                                                                                                     \
+        /** \param T
+        * \exclude
+        * \param 1
+        * \exclude */                     \
+        template <typename T = StrongTypedef,                                                        \
+                  typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type> \
+        friend constexpr StrongTypedef operator Op(const Other& lhs, StrongTypedef&& rhs)            \
+        {                                                                                            \
+            using type = underlying_type<StrongTypedef>;                                             \
+            return StrongTypedef(static_cast<const type&>(lhs) Op get(std::move(rhs)));              \
+        }                                                                                            \
     };
 
         TYPE_SAFE_DETAIL_MAKE_OP(addition, +)
@@ -410,6 +620,13 @@ namespace type_safe
         template <class StrongTypedef>
         struct unary_plus
         {
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             constexpr StrongTypedef operator+() const
             {
                 using type = underlying_type<StrongTypedef>;
@@ -421,6 +638,13 @@ namespace type_safe
         template <class StrongTypedef>
         struct unary_minus
         {
+            /// \param T
+            /// \exclude
+            /// \param 1
+            /// \exclude
+            template <
+                typename T = StrongTypedef,
+                typename   = typename std::enable_if<std::is_same<T, StrongTypedef>::value>::type>
             constexpr StrongTypedef operator-() const
             {
                 using type = underlying_type<StrongTypedef>;
